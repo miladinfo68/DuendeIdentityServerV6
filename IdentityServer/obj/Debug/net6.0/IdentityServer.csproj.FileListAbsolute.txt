@@ -1,0 +1,8 @@
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.csproj.AssemblyReference.cache
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.GeneratedMSBuildEditorConfig.editorconfig
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.AssemblyInfoInputs.cache
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.AssemblyInfo.cs
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.csproj.CoreCompileInputs.cache
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.MvcApplicationPartsAssemblyInfo.cache
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.RazorAssemblyInfo.cache
+F:\Tutorials\IdentityServerV6Demo\IdentityServerV6Demo\IdentityServer\obj\Debug\net6.0\IdentityServer.RazorAssemblyInfo.cs

@@ -1,0 +1,52 @@
+docker-compose up --build -d
+
+dotnet tool update --global dotnet-ef
+
+
+
+dotnet ef migrations add init-AppDbContext -c ApplicationDbContext -o Data/Migrations/Identity/ApplicationDb
+dotnet ef migrations add init-IdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
+dotnet ef migrations add init-IdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
+
+dotnet ef database update -c ApplicationDbContext
+dotnet ef database update -c ConfigurationDbContext
+dotnet ef database update -c PersistedGrantDbContext
+
+dotnet new -i Duende.IdentityServer.Templates
+dotnet new isui
+curl -L https://raw.githubusercontent.com/DuendeSoftware/IdentityServer.Quickstart.UI/main/getmain.sh | bash
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/DuendeSoftware/IdentityServer.Quickstart.UI/main/getmain.ps1'))
+
+-------------- windows host file settings------------
+127.0.0.1 api
+127.0.0.1 identityserver
+127.0.0.1 singlepageapplication
+127.0.0.1 webapplication
+
+-------------- cert management ------------
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust -ep $env:USERPROFILE\.aspnet\https\aspnetapp.pfx -p SECRETPASSWORD
+
+------for me
+dotnet dev-certs https --trust -ep $env:USERPROFILE\.aspnet\https\localhost.pfx -p P@55w0rd!
+
+openssl req -x509 -newkey rsa:4096 -keyout localhost.key -out localhost.crt -subj "/CN=localhost" -addext "subjectAltName=DNS:localhost,DNS:api,DNS:identityserver,DNS:singlepageapplication,DNS:webapplication"
+openssl pkcs12 -export -in localhost.crt -inkey localhost.key -out localhost.pfx -name "Creating an IdentityServer 6 Solution"
+-------> crt,pfx file's password ---> P@55w0rd!
+
+docker run -d -v /c/temp-keys:/root/.aspnet/DataProtection-Keys container-name
+docker run -d -v /c/temp-keys:/root/.aspnet/DataProtection-Keys api:v1
+
+https://www.docker.com/blog/building-multi-container-net-app-using-docker-desktop/
+
+
+
+
+
+
+
+
+
+https://www.fearofoblivion.com/setting-up-asp-net-dev-certs-for-both-wsl-and-windows
+https://tomssl.com/how-to-run-asp-net-core-3-1-over-https-in-docker-using-linux-containers/
+

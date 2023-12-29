@@ -1,0 +1,78 @@
+﻿version: '3.8'
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    hostname: localhost
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: root
+      #POSTGRES_DB: identity_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    restart: unless-stopped
+    
+  api:
+    image: "api:v1"
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./Api/Dockerfile
+    depends_on:
+      - identityserver
+#    entrypoint: /bin/sh -c "update-ca-certificates && dotnet Api.dll"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:7001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=P@55w0rd!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx
+      - Jwt__AUTHORITY=https://identityserver:7000
+      - Jwt__AUDIENCE=9fc33c2e-dbc1-4d0a-b212-68b9e07b3ba0
+    ports:
+      - "7001:7001"
+    volumes:
+      - ./localhost.pfx:/https/localhost.pfx:ro
+      - ./localhost.crt:/usr/local/share/ca-certificates/localhost.crt:ro
+    
+  identityserver:
+    image: "identityserver:v1"
+    container_name: identityserver
+    build:
+      context: .
+      dockerfile: ./IdentityServer/Dockerfile
+    depends_on:
+      - postgres
+    entrypoint: /bin/sh -c "update-ca-certificates && dotnet IdentityServer.dll"  
+    ports:
+      - "7000:7000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:7000
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=P@55w0rd!  
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx
+      - CONNECTIONSTRINGS__IDENTITY=Server=postgres;Port=5432;Database=identity_db;User Id=admin;Password=root;
+      - CONNECTIONSTRINGS__IDENTITYSERVER=Server=postgres;Port=5432;Database=identity_server_db;User Id=admin;Password=root;
+    volumes:
+      - ./localhost.pfx:/https/localhost.pfx:ro
+      - ./localhost.crt:/usr/local/share/ca-certificates/localhost.crt:ro  
+      #- ~/.aspnet/https:/https:ro
+        
+
+      
+      
+volumes:
+  postgres-data:

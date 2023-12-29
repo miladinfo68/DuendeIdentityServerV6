@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\obj\\Debug\\net8.0\\compressed\\br8397d19j.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SinglePageApplication.styles.css",
+      "PackagePath": "staticwebassets\\SinglePageApplication.styles.css"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "F:\\Tutorials\\IdentityServerV6Demo\\IdentityServerV6Demo\\SinglePageApplication\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SinglePageApplication.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SinglePageApplication.props",
+      "PackagePath": "build\\SinglePageApplication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SinglePageApplication.props",
+      "PackagePath": "buildMultiTargeting\\SinglePageApplication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SinglePageApplication.props",
+      "PackagePath": "buildTransitive\\SinglePageApplication.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

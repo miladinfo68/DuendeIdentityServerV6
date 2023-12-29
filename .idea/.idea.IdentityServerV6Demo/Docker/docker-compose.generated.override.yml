@@ -1,0 +1,40 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.8"
+services:
+  api:
+    build:
+      context: "/mnt/f/Tutorials/IdentityServerV6Demo/IdentityServerV6Demo"
+      dockerfile: "./Api/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Api.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "api:dev"
+    ports: []
+    volumes:
+    - "/mnt/c/Users/milad/.nuget/packages:/root/.nuget/packages"
+    - "/mnt/f/Tutorials/IdentityServerV6Demo/IdentityServerV6Demo/Api:/app:rw"
+    - "/mnt/f/Tutorials/IdentityServerV6Demo/IdentityServerV6Demo:/src:rw"
+    working_dir: "/app"
+  identityserver:
+    build:
+      context: "/mnt/f/Tutorials/IdentityServerV6Demo/IdentityServerV6Demo"
+      dockerfile: "./IdentityServer/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/IdentityServer.dll"
+    environment:
+      ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/IdentityServer.staticwebassets.runtime.CT.json"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "identityserver:dev"
+    ports: []
+    volumes:
+    - "/mnt/c/Users/milad/.nuget/packages:/root/.nuget/packages"
+    - "/mnt/f/Tutorials/IdentityServerV6Demo/IdentityServerV6Demo/IdentityServer:/app:rw"
+    - "/mnt/f/Tutorials/IdentityServerV6Demo/IdentityServerV6Demo:/src:rw"
+    working_dir: "/app"
